@@ -33,9 +33,16 @@ import java.io.FileNotFoundException;
 import ome.model.core.OriginalFile;
 
 
-/**
- * @author callan
+/** 
+ * Raw file service which provides access to <code>FileBuffers</code>. 
  *
+ * @author  Chris Allan &nbsp;&nbsp;&nbsp;&nbsp;
+ *              <a href="mailto:callan@blackcat.ca">callan@blackcat.ca</a>
+ * @version 3.0
+ * <small>
+ * (<b>Internal version:</b> $Revision: 1.2 $ $Date: 2005/06/08 15:21:59 $)
+ * </small>
+ * @since OMERO3.0
  */
 public class OriginalFilesService extends AbstractFileSystemService
 {
@@ -45,21 +52,8 @@ public class OriginalFilesService extends AbstractFileSystemService
         super(path);
     }
     
-    public FileBuffer createFileBuffer(OriginalFile file)
-        throws FileNotFoundException
+    public FileBuffer getFileBuffer(OriginalFile file)
     {
-        return new FileBuffer(getFilesPath(file.getId()),file, "rw");
-    }
-
-    public FileBuffer getReadOnlyFileBuffer(OriginalFile file)
-        throws FileNotFoundException
-    {
-        return new FileBuffer(getFilesPath(file.getId()),file, "r");
-    }
-    
-    public FileBuffer getReadWriteFileBuffer(OriginalFile file)
-        throws FileNotFoundException
-    {
-        return new FileBuffer(getFilesPath(file.getId()),file, "rw");
+        return new FileBuffer(getFilesPath(file.getId()), file);
     }
 }
