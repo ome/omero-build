@@ -1,0 +1,9 @@
+[submodule "omero-dsl"]
+	path = omero-dsl
+	url = git@github.com:rgozim/omero-dsl.git
+[submodule "omero-model"]
+	path = omero-model
+	url = git@github.com:rgozim/omero-model.git
+[submodule "omero-common"]
+	path = omero-common
+	url = git@github.com:rgozim/omero-common.git

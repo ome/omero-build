@@ -1,0 +1,31 @@
+buildscript {
+    repositories {
+        jcenter()
+    }
+}
+
+allprojects {
+    repositories {
+        jcenter()
+        mavenLocal()
+    }
+}
+
+
+
+
+/*
+project (':omero-dsl:dslplugin') {
+    dependencies {
+        compile project(':omero-dsl:dsl')
+    }
+}
+
+project ()
+
+project (':omero-common') {
+    dependencies {
+        compile project(':omero-model')
+    }
+}
+*/
