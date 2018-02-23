@@ -1,31 +1,65 @@
-buildscript {
-    repositories {
-        jcenter()
-    }
-}
-
 allprojects {
-    repositories {
-        jcenter()
-        mavenLocal()
+    apply plugin: 'java'
+
+    configurations.all {
+        resolutionStrategy {
+            // prefer modules that are part of this build (multi-project or composite build) over external modules
+            preferProjectModules()
+            resolutionStrategy {
+                dependencySubstitution {
+                    substitute module('com.openmicroscopy:omero-renderer') with project(':omero-renderer')
+                    substitute module('com.openmicroscopy:omero-romio') with project(':omero-romio')
+                    substitute module('com.openmicroscopy:omero-common') with project(':omero-common')
+                    substitute module('com.openmicroscopy:omero-model') with project(':omero-model')
+                }
+            }
+        }
     }
 }
 
-
-
-
-/*
-project (':omero-dsl:dslplugin') {
-    dependencies {
-        compile project(':omero-dsl:dsl')
+/*project(':omero-common') {
+    configurations.all {
+        resolutionStrategy {
+            dependencySubstitution {
+                substitute module('com.openmicroscopy:omero-model') with project(':omero-model')
+            }
+        }
     }
 }
 
-project ()
-
-project (':omero-common') {
-    dependencies {
-        compile project(':omero-model')
+project (':omero-romio') {
+    configurations.all {
+        resolutionStrategy {
+            dependencySubstitution {
+                substitute module('com.openmicroscopy:omero-common') with project(':omero-common')
+                substitute module('com.openmicroscopy:omero-model') with project(':omero-model')
+            }
+        }
     }
 }
-*/
+
+project (':omero-renderer') {
+    configurations.all {
+        resolutionStrategy {
+            dependencySubstitution {
+                substitute module('com.openmicroscopy:omero-romio') with project(':omero-romio')
+                substitute module('com.openmicroscopy:omero-common') with project(':omero-common')
+                substitute module('com.openmicroscopy:omero-model') with project(':omero-model')
+            }
+        }
+    }
+}
+
+project (':omero-server') {
+    configurations.all {
+        resolutionStrategy {
+            dependencySubstitution {
+                substitute module('com.openmicroscopy:omero-renderer') with project(':omero-renderer')
+                substitute module('com.openmicroscopy:omero-romio') with project(':omero-romio')
+                substitute module('com.openmicroscopy:omero-common') with project(':omero-common')
+                substitute module('com.openmicroscopy:omero-model') with project(':omero-model')
+            }
+        }
+    }
+}*/
+

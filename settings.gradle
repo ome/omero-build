@@ -1,17 +1,14 @@
 rootProject.name = 'omero-all'
 
-
-// include 'omero-dsl'
-include 'dsl'
-include 'dslplugin'
 include 'omero-model'
 include 'omero-common'
+include 'omero-romio'
+include 'omero-renderer'
+include 'omero-server'
 
 // Configure root projects interpretation of omero-dsl
-
-//project(':omero-dsl').projectDir = file('omero-dsl')
-project(':dsl').projectDir = file('omero-dsl/dsl')
-project(':dslplugin').projectDir = file('omero-dsl/dslplugin')
-
 project(':omero-model').projectDir = file('omero-model')
 project(':omero-common').projectDir = file('omero-common')
+project(':omero-romio').projectDir = file('omero-romio')
+project(':omero-renderer').projectDir = file('omero-renderer')
+project(':omero-server').projectDir = file('omero-server')
