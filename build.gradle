@@ -5,14 +5,15 @@ allprojects {
         resolutionStrategy {
             // prefer modules that are part of this build (multi-project or composite build) over external modules
             preferProjectModules()
-            /*resolutionStrategy {
+            resolutionStrategy {
                 dependencySubstitution {
                     substitute module('com.openmicroscopy:omero-renderer') with project(':omero-renderer')
                     substitute module('com.openmicroscopy:omero-romio') with project(':omero-romio')
                     substitute module('com.openmicroscopy:omero-common') with project(':omero-common')
                     substitute module('com.openmicroscopy:omero-model') with project(':omero-model')
                 }
-            }*/
+            }
         }
     }
 }
+
