@@ -1,15 +1,15 @@
 [submodule "omero-model"]
 	path = omero-model
-	url = git@github.com:rgozim/omero-model.git
+	url = ../omero-model.git
 [submodule "omero-common"]
 	path = omero-common
-	url = git@github.com:rgozim/omero-common.git
+	url = ../omero-common.git
 [submodule "omero-romio"]
 	path = omero-romio
-	url = git@github.com:rgozim/omero-romio.git
+	url =../omero-romio.git
 [submodule "omero-renderer"]
 	path = omero-renderer
-	url = git@github.com:rgozim/omero-renderer.git
+	url = ../omero-renderer.git
 [submodule "omero-server"]
 	path = omero-server
-	url = git@github.com:rgozim/omero-server.git
+	url = ../omero-server.git
