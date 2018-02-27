@@ -5,6 +5,7 @@ allprojects {
         resolutionStrategy {
             // prefer modules that are part of this build (multi-project or composite build) over external modules
             preferProjectModules()
+            
             resolutionStrategy {
                 dependencySubstitution {
                     substitute module('com.openmicroscopy:omero-renderer') with project(':omero-renderer')
