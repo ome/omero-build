@@ -1,15 +1,20 @@
 [submodule "omero-model"]
 	path = omero-model
 	url = ../omero-model.git
+	branch = master
 [submodule "omero-common"]
 	path = omero-common
 	url = ../omero-common.git
+	branch = master
 [submodule "omero-romio"]
 	path = omero-romio
 	url =../omero-romio.git
+	branch = master
 [submodule "omero-renderer"]
 	path = omero-renderer
 	url = ../omero-renderer.git
+	branch = master
 [submodule "omero-server"]
 	path = omero-server
 	url = ../omero-server.git
+	branch = master
