@@ -36,7 +36,3 @@ gradle-local.properties
 
 # Gradle cache
 .gradle
-
-# Ignore generated source code
-/src/main/ice36/ome/services/sharing/data/*
-/src/main/ice37/ome/services/sharing/data/*
