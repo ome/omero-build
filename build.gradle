@@ -8,10 +8,10 @@ allprojects {
             
             resolutionStrategy {
                 dependencySubstitution {
-                    substitute module('com.openmicroscopy:omero-renderer') with project(':omero-renderer')
-                    substitute module('com.openmicroscopy:omero-romio') with project(':omero-romio')
-                    substitute module('com.openmicroscopy:omero-common') with project(':omero-common')
-                    substitute module('com.openmicroscopy:omero-model') with project(':omero-model')
+                    substitute module('org.openmicroscopy:omero-renderer') with project(':omero-renderer')
+                    substitute module('org.openmicroscopy:omero-romio') with project(':omero-romio')
+                    substitute module('org.openmicroscopy:omero-common') with project(':omero-common')
+                    substitute module('org.openmicroscopy:omero-model') with project(':omero-model')
                 }
             }
         }
