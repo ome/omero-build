@@ -1,3 +1,9 @@
+// Minimum version is 3.2 when preferProjectModules was added.
+GradleVersion minGradle = GradleVersion.version('3.2')
+if (GradleVersion.current() < minGradle) {
+    throw new GradleException("${minGradle} or above is required to build")
+}
+
 allprojects {
     apply plugin: 'java'
 
