@@ -1,26 +1,24 @@
-// Minimum version is 3.2 when preferProjectModules was added.
-GradleVersion minGradle = GradleVersion.version('3.2')
-if (GradleVersion.current() < minGradle) {
-    throw new GradleException("${minGradle} or above is required to build")
-}
+subprojects {
 
-allprojects {
     apply plugin: 'java'
+
+    repositories {
+        maven {
+            url 'http://artifacts.openmicroscopy.org/artifactory/maven/'
+        }
+    }
 
     configurations.all {
         resolutionStrategy {
             // prefer modules that are part of this build (multi-project or composite build) over external modules
             preferProjectModules()
-            
-            resolutionStrategy {
-                dependencySubstitution {
-                    substitute module('org.openmicroscopy:omero-renderer') with project(':omero-renderer')
-                    substitute module('org.openmicroscopy:omero-romio') with project(':omero-romio')
-                    substitute module('org.openmicroscopy:omero-common') with project(':omero-common')
-                    substitute module('org.openmicroscopy:omero-model') with project(':omero-model')
-                }
+
+            dependencySubstitution {
+                substitute module('org.openmicroscopy:omero-renderer') with project(':omero-renderer')
+                substitute module('org.openmicroscopy:omero-romio') with project(':omero-romio')
+                substitute module('org.openmicroscopy:omero-common') with project(':omero-common')
+                substitute module('org.openmicroscopy:omero-model') with project(':omero-model')
             }
         }
     }
 }
-
