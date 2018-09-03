@@ -1,7 +1,7 @@
 [submodule "omero-model"]
 	path = omero-model
 	url = ../omero-model.git
-	branch = hibernate_3
+	branch = incubating
 [submodule "omero-common"]
 	path = omero-common
 	url = ../omero-common.git
