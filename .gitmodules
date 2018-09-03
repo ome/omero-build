@@ -5,16 +5,16 @@
 [submodule "omero-common"]
 	path = omero-common
 	url = ../omero-common.git
-	branch = hibernate_3
+	branch = togradle
 [submodule "omero-romio"]
 	path = omero-romio
 	url =../omero-romio.git
-	branch = hibernate_3
+	branch = togradle
 [submodule "omero-renderer"]
 	path = omero-renderer
 	url = ../omero-renderer.git
-	branch = hibernate_3
+	branch = togradle
 [submodule "omero-server"]
 	path = omero-server
 	url = ../omero-server.git
-	branch = hibernate_3
+	branch = togradle
