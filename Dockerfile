@@ -22,24 +22,23 @@ ARG BUILD_IMAGE=gradle:jdk8
 # Build phase: Use the gradle image for building.
 #
 FROM ${BUILD_IMAGE} as build
-COPY . /src
 USER root
-RUN cat /etc/apt/sources.list
 RUN apt-get update && apt-get install -y zeroc-ice-all-dev
-RUN chown -R 1000 /src
+RUN mkdir /src && chown 1000:1000 /src
+
 USER 1000
+
+# Temporarily build omero-dsl locally
 RUN git clone git://github.com/ome/omero-dsl /tmp/omero-dsl
 WORKDIR /tmp/omero-dsl
 RUN gradle publishToMavenLocal
-WORKDIR /src
-RUN git submodule update --init
-RUN gradle build
 
-#
-# Install phase: Copy the build ImageJ.app into a
-# clean container to minimize size.
-#
-# FROM ${IMAGE}
-# COPY --from=build /src/ /opt/omero
-ENV PATH $PATH:/opt/omero
-ENTRYPOINT ["bash"]
+# Initialize submodules
+WORKDIR /src
+COPY --chown=1000:1000 .git /src/.git
+COPY --chown=1000:1000 .gitmodules /src/.gitmodules
+RUN git submodule update --init
+
+# Build all
+COPY --chown=1000:1000 *.gradle /src/
+RUN gradle build
