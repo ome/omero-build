@@ -1,8 +1,8 @@
 [submodule "omero-model"]
 	path = omero-model
-	url = ../omero-model.git
-	branch = togradle
+	url = git://github.com/joshmoore/omero-model.git
+	branch = travis
 [submodule "omero-common"]
 	path = omero-common
-	url = ../omero-common.git
-	branch = togradle
+	url = git://github.com/joshmoore/omero-common.git
+	branch = travis
