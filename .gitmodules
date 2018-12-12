@@ -6,15 +6,3 @@
 	path = omero-common
 	url = ../omero-common.git
 	branch = togradle
-[submodule "omero-romio"]
-	path = omero-romio
-	url =../omero-romio.git
-	branch = togradle
-[submodule "omero-renderer"]
-	path = omero-renderer
-	url = ../omero-renderer.git
-	branch = togradle
-[submodule "omero-server"]
-	path = omero-server
-	url = ../omero-server.git
-	branch = togradle
