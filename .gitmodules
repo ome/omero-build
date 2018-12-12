@@ -6,3 +6,6 @@
 	path = omero-common
 	url = git://github.com/joshmoore/omero-common.git
 	branch = travis
+[submodule "omero-romio"]
+	path = omero-romio
+	url = git://github.com/ome/omero-romio
