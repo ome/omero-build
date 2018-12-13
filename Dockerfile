@@ -32,6 +32,10 @@ USER 1000
 RUN git clone git://github.com/ome/omero-dsl /tmp/omero-dsl
 WORKDIR /tmp/omero-dsl
 RUN gradle publishToMavenLocal
+# and blitz-plugin as well
+RUN git clone git://github.com/ome/omero-blitz-plugin /tmp/omero-blitz-plugin
+WORKDIR /tmp/omero-blitz-plugin
+RUN gradle publishToMavenLocal
 
 # Initialize submodules
 WORKDIR /src
