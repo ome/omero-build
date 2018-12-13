@@ -14,3 +14,7 @@
 	path = omero-renderer
 	url = git://github.com/ome/omero-renderer
 	branch = master
+[submodule "omero-server"]
+	path = omero-server
+	url = git://github.com/ome/omero-server
+	branch = master
