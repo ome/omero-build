@@ -9,3 +9,4 @@
 [submodule "omero-romio"]
 	path = omero-romio
 	url = git://github.com/ome/omero-romio
+	branch = master

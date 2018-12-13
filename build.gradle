@@ -4,7 +4,7 @@ subprojects {
 
     repositories {
         maven {
-            url 'http://artifacts.openmicroscopy.org/artifactory/maven/'
+            url 'https://artifacts.openmicroscopy.org/artifactory/maven/'
         }
     }
 

@@ -39,6 +39,10 @@ COPY --chown=1000:1000 .git /src/.git
 COPY --chown=1000:1000 .gitmodules /src/.gitmodules
 RUN git submodule update --init
 
+ARG BUILD_LABEL=1
+RUN echo Current label: ${BUILD_LABEL}. Increment to rebuild.
+RUN git submodule update --remote
+
 # Build all
 COPY --chown=1000:1000 *.gradle /src/
-RUN gradle build
+#RUN gradle build
