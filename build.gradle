@@ -14,6 +14,8 @@ subprojects {
             preferProjectModules()
 
             dependencySubstitution {
+                substitute module('org.openmicroscopy:omero-blitz') with project(':omero-blitz')
+                substitute module('org.openmicroscopy:omero-server') with project(':omero-server')
                 substitute module('org.openmicroscopy:omero-renderer') with project(':omero-renderer')
                 substitute module('org.openmicroscopy:omero-romio') with project(':omero-romio')
                 substitute module('org.openmicroscopy:omero-common') with project(':omero-common')

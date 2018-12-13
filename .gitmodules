@@ -18,3 +18,7 @@
 	path = omero-server
 	url = git://github.com/ome/omero-server
 	branch = master
+[submodule "omero-blitz"]
+	path = omero-blitz
+	url = git://github.com/ome/omero-blitz
+	branch = master
