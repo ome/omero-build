@@ -1,0 +1,8 @@
+language: python
+cache: pip
+sudo: required
+services:
+- docker
+
+script:
+- docker build -t omero-build .
