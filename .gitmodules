@@ -1,11 +1,11 @@
 [submodule "omero-model"]
 	path = omero-model
-	url = git://github.com/joshmoore/omero-model
-	branch = travis
+	url = git://github.com/ome/omero-model
+	branch = master
 [submodule "omero-common"]
 	path = omero-common
-	url = git://github.com/joshmoore/omero-common
-	branch = travis
+	url = git://github.com/ome/omero-common
+	branch = master
 [submodule "omero-romio"]
 	path = omero-romio
 	url = git://github.com/ome/omero-romio
