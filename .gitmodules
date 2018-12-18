@@ -1,8 +1,24 @@
 [submodule "omero-model"]
 	path = omero-model
-	url = ../omero-model.git
-	branch = togradle
+	url = git://github.com/ome/omero-model
+	branch = master
 [submodule "omero-common"]
 	path = omero-common
-	url = ../omero-common.git
-	branch = togradle
+	url = git://github.com/ome/omero-common
+	branch = master
+[submodule "omero-romio"]
+	path = omero-romio
+	url = git://github.com/ome/omero-romio
+	branch = master
+[submodule "omero-renderer"]
+	path = omero-renderer
+	url = git://github.com/ome/omero-renderer
+	branch = master
+[submodule "omero-server"]
+	path = omero-server
+	url = git://github.com/ome/omero-server
+	branch = master
+[submodule "omero-blitz"]
+	path = omero-blitz
+	url = git://github.com/ome/omero-blitz
+	branch = master
