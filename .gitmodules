@@ -20,5 +20,5 @@
 	branch = master
 [submodule "omero-blitz"]
 	path = omero-blitz
-	url = git://github.com/rgozim/omero-blitz
-	branch = stable
+	url = git://github.com/ome/omero-blitz
+	branch = master
