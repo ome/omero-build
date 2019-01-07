@@ -28,14 +28,11 @@ RUN mkdir /src && chown 1000:1000 /src
 
 USER 1000
 
-# Temporarily build omero-dsl locally
-RUN git clone git://github.com/ome/omero-dsl /tmp/omero-dsl
-WORKDIR /tmp/omero-dsl
-RUN gradle publishToMavenLocal
-# and blitz-plugin as well
-RUN git clone git://github.com/ome/omero-blitz-plugin /tmp/omero-blitz-plugin
-WORKDIR /tmp/omero-blitz-plugin
-RUN gradle publishToMavenLocal
+# Temporarily build gradle-plugins locally
+RUN git clone git://github.com/ome/omero-gradle-plugins /tmp/omero-gradle-plugins
+WORKDIR /tmp/omero-gradle-plugins
+RUN git submodule update --init
+RUN ./build.sh
 
 # Initialize submodules
 WORKDIR /src
