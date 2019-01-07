@@ -1,7 +1,7 @@
 [submodule "omero-model"]
 	path = omero-model
-	url = git://github.com/ome/omero-model
-	branch = master
+	url = git://github.com/jburel/omero-model
+	branch = dependency
 [submodule "omero-common"]
 	path = omero-common
 	url = git://github.com/ome/omero-common
