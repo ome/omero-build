@@ -23,7 +23,13 @@ ARG BUILD_IMAGE=gradle:jdk8
 #
 FROM ${BUILD_IMAGE} as build
 USER root
-RUN apt-get update && apt-get install -y zeroc-ice-all-dev
+RUN apt-get -y update \
+ && apt-get -y install gnupg2 software-properties-common
+RUN apt-key adv --no-tty --keyserver keyserver.ubuntu.com --recv B6391CB2CFBA643D \
+ && apt-add-repository "deb http://zeroc.com/download/Ice/3.7/debian9 stable main" \
+ && apt-get -y update \
+ && apt-get -y install zeroc-ice-all-runtime zeroc-ice-all-dev \
+ && apt-get -y install python-zeroc-ice
 RUN mkdir /src && chown 1000:1000 /src
 
 USER 1000
