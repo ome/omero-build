@@ -16,7 +16,7 @@ ARG IMAGE=openjdk:8-jre-alpine
 
 # Similarly, the BUILD_IMAGE argument can be overwritten
 # but this is generally not needed.
-ARG BUILD_IMAGE=gradle:jdk8
+ARG BUILD_IMAGE=gradle:5.1-jdk8
 
 #
 # Build phase: Use the gradle image for building.
@@ -29,7 +29,7 @@ RUN mkdir /src && chown 1000:1000 /src
 USER 1000
 
 # Temporarily build gradle-plugins locally
-RUN git clone -b wip git://github.com/jburel/omero-gradle-plugins /tmp/omero-gradle-plugins
+RUN git clone -b squashed git://github.com/joshmoore/omero-gradle-plugins /tmp/omero-gradle-plugins
 WORKDIR /tmp/omero-gradle-plugins
 RUN git submodule update --init
 RUN ./build.sh
