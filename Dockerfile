@@ -29,7 +29,7 @@ RUN mkdir /src && chown 1000:1000 /src
 USER 1000
 
 # Temporarily build gradle-plugins locally
-RUN git clone -b squashed git://github.com/joshmoore/omero-gradle-plugins /tmp/omero-gradle-plugins
+RUN git clone git://github.com/ome/omero-gradle-plugins /tmp/omero-gradle-plugins
 WORKDIR /tmp/omero-gradle-plugins
 RUN git submodule update --init
 RUN ./build.sh
