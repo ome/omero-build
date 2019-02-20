@@ -1,26 +1,24 @@
-subprojects {
-
-    apply plugin: 'java'
-
-    repositories {
-        maven {
-            url 'https://artifacts.openmicroscopy.org/artifactory/maven/'
-        }
-    }
-
-    configurations.all {
-        resolutionStrategy {
-            // prefer modules that are part of this build (multi-project or composite build) over external modules
-            preferProjectModules()
-
-            dependencySubstitution {
-                substitute module('org.openmicroscopy:omero-blitz') with project(':omero-blitz')
-                substitute module('org.openmicroscopy:omero-server') with project(':omero-server')
-                substitute module('org.openmicroscopy:omero-renderer') with project(':omero-renderer')
-                substitute module('org.openmicroscopy:omero-romio') with project(':omero-romio')
-                substitute module('org.openmicroscopy:omero-common') with project(':omero-common')
-                substitute module('org.openmicroscopy:omero-model') with project(':omero-model')
-            }
-        }
-    }
+task publishToMavenLocal {
+    group "omero"
+    description "Calls publishToMavenLocal on all subprojects"
+    dependsOn gradle.includedBuilds*.task(':publishToMavenLocal')
 }
+
+task clean {
+    group "omero"
+    description "Calls clean on all subprojects"
+    dependsOn gradle.includedBuilds*.task(':clean')
+}
+
+task test {
+    group "omero"
+    description "Calls test on all subprojects"
+    dependsOn gradle.includedBuilds*.task(':test')
+}
+
+task javadoc {
+    group "omero"
+    description "Calls javadoc on all subprojects"
+    dependsOn gradle.includedBuilds*.task(':javadoc')
+}
+

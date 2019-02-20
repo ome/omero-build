@@ -1,10 +1,3 @@
-pluginManagement {
-    repositories {
-        mavenLocal()
-        gradlePluginPortal()
-    }
-}
-
 rootProject.name = 'omero-build'
 
 include 'omero-model'
@@ -13,11 +6,3 @@ include 'omero-romio'
 include 'omero-renderer'
 include 'omero-server'
 include 'omero-blitz'
-
-// Configure root projects interpretation of omero-dsl
-project(':omero-model').projectDir = file('omero-model')
-project(':omero-common').projectDir = file('omero-common')
-project(':omero-romio').projectDir = file('omero-romio')
-project(':omero-renderer').projectDir = file('omero-renderer')
-project(':omero-server').projectDir = file('omero-server')
-project(':omero-blitz').projectDir = file('omero-blitz')
