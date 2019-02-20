@@ -1,24 +1,24 @@
 [submodule "omero-model"]
 	path = omero-model
-	url = git://github.com/ome/omero-model
-	branch = master
+	url = git://github.com/rgozim/omero-model
+	branch = develop
 [submodule "omero-common"]
 	path = omero-common
-	url = git://github.com/ome/omero-common
+	url = git://github.com/rgozim/omero-common
 	branch = master
 [submodule "omero-romio"]
 	path = omero-romio
-	url = git://github.com/ome/omero-romio
-	branch = master
+	url = git://github.com/rgozim/omero-romio
+	branch = develop
 [submodule "omero-renderer"]
 	path = omero-renderer
-	url = git://github.com/ome/omero-renderer
-	branch = master
+	url = git://github.com/rgozim/omero-renderer
+	branch = develop
 [submodule "omero-server"]
 	path = omero-server
-	url = git://github.com/ome/omero-server
-	branch = master
+	url = git://github.com/rgozim/omero-server
+	branch = develop
 [submodule "omero-blitz"]
 	path = omero-blitz
-	url = git://github.com/ome/omero-blitz
-	branch = master
+	url = git://github.com/rgozim/omero-blitz
+	branch = develop
