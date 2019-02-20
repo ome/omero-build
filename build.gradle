@@ -1,0 +1,48 @@
+plugins {
+    id 'java-library'
+    id 'maven-publish'
+}
+
+group 'org.openmicroscopy'
+version '5.5.0-SNAPSHOT'
+sourceCompatibility = JavaVersion.VERSION_1_8
+targetCompatibility = JavaVersion.VERSION_1_8
+
+repositories {
+    mavenCentral()
+    mavenLocal()
+    maven { url 'https://artifacts.openmicroscopy.org/artifactory/maven/' }
+}
+
+dependencies {
+    testCompile group: 'junit', name: 'junit', version: '4.12'
+    testCompile group: 'org.testng', name: 'testng', version: '6.14.2'
+
+    api 'org.openmicroscopy:omero-common:5.5.0-SNAPSHOT'
+
+    // Keep from being exposed to child projects
+    implementation 'commons-io:commons-io:2.6'
+    implementation 'commons-lang:commons-lang:2.6'
+}
+
+test {
+    // enable TestNG support (default is JUnit)
+    useTestNG() {
+        suites "src/test/resources/unit.testng.xml"
+    }
+}
+
+jar {
+    manifest {
+        attributes(
+                'Build-Timestamp': new java.text.SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSZ").format(new Date()),
+                'Created-By': "Gradle ${gradle.gradleVersion}",
+                'Build-Jdk': "${System.properties['java.version']} (${System.properties['java.vendor']} ${System.properties['java.vm.version']})",
+                "Class-Path": configurations.runtimeClasspath.collect { it.getName() }.join(' ')
+        )
+    }
+}
+
+// Add publish functionality
+apply from: 'publish.gradle'
+
