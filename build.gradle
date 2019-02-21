@@ -18,14 +18,14 @@ java {
 }
 
 dependencies {
-    testImplementation "junit:junit:4.12"
-    testImplementation "org.testng:testng:6.14.2"
+    testImplementation("junit:junit:4.12")
+    testImplementation("org.testng:testng:6.14.2")
 
-    api "org.openmicroscopy:omero-common:5.5.0-SNAPSHOT"
+    api("org.openmicroscopy:omero-common:5.5.0-SNAPSHOT")
 
     // Keep from being exposed to child projects
-    implementation "commons-io:commons-io:2.6"
-    implementation "commons-lang:commons-lang:2.6"
+    implementation("commons-io:commons-io:2.6")
+    implementation("commons-lang:commons-lang:2.6")
 }
 
 test {
