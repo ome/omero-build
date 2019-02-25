@@ -4,13 +4,13 @@ plugins {
 }
 
 group 'org.openmicroscopy'
-version '5.5.0-SNAPSHOT'
+version '5.5.0-m3'
 sourceCompatibility = JavaVersion.VERSION_1_8
 targetCompatibility = JavaVersion.VERSION_1_8
 
 repositories {
-    mavenCentral()
     mavenLocal()
+    mavenCentral()
     maven { url 'https://artifacts.openmicroscopy.org/artifactory/maven/' }
 }
 
@@ -18,7 +18,7 @@ dependencies {
     testCompile group: 'junit', name: 'junit', version: '4.12'
     testCompile group: 'org.testng', name: 'testng', version: '6.14.2'
 
-    api 'org.openmicroscopy:omero-common:5.5.0-SNAPSHOT'
+    api 'org.openmicroscopy:omero-common:5.5.0-m3'
 
     // Keep from being exposed to child projects
     implementation 'commons-io:commons-io:2.6'
