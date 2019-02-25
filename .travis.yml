@@ -6,16 +6,7 @@ cache:
   directories:
     - $HOME/.gradle/caches/
     - $HOME/.gradle/wrapper/
-before_install:
-  - git clone git://github.com/ome/omero-dsl-plugin
-  - cd omero-dsl-plugin && ./gradlew publishToMavenLocal
-  - cd ..
-  - git clone git://github.com/ome/omero-model
-  - cd omero-model && ./gradlew publishToMavenLocal
-  - cd ..
-  - git clone git://github.com/ome/omero-common
-  - cd omero-common && ./gradlew publishToMavenLocal
-  - cd ..
+
 script:
   - ./gradlew publishToMavenLocal
 
@@ -24,4 +15,4 @@ deploy:
   script: ./gradlew publish
   skip_cleanup: true
   on:
-    branch: deploy
+    tags: true
