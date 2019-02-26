@@ -491,7 +491,7 @@ public class RomioPixelBuffer extends AbstractBuffer implements PixelBuffer {
         Integer size = safeLongToInteger(getPlaneSize());
         PixelData region = getRegion(size, offset);
 
-        byte[] nullPlane = PixelsService.nullPlane;
+        final byte[] nullPlane = PixelsService.NULL_PLANE;
 
         for (int i = 0; i < PixelsService.NULL_PLANE_SIZE; i++) {
             if (region.getData().get(i) != nullPlane[i]) {

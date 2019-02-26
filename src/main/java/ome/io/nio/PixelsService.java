@@ -721,7 +721,7 @@ public class PixelsService extends AbstractFileSystemService
 			for (int z = 0; z < pixbuf.getSizeZ(); z++) {
 				for (int c = 0; c < pixbuf.getSizeC(); c++) {
 					for (int t = 0; t < pixbuf.getSizeT(); t++) {
-						stream.write(nullPlane);
+						stream.write(NULL_PLANE);
 						stream.write(padding);
 					}
 				}
