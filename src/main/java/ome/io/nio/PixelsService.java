@@ -1,5 +1,5 @@
 /*
- *   Copyright 2006-2018 University of Dundee. All rights reserved.
+ *   Copyright 2006-2019 University of Dundee. All rights reserved.
  *   Use is subject to license terms supplied in LICENSE.txt
  */
 
@@ -70,8 +70,19 @@ public class PixelsService extends AbstractFileSystemService
 	/** Null plane size constant. */
 	public static final int NULL_PLANE_SIZE = 64;
 
+    /** Null plane byte array. */
+    public static final byte[] NULL_PLANE = new byte[NULL_PLANE_SIZE];
+
 	/** Default of 100 ms for {@link #memoizerWait} */
 	public static final long MEMOIZER_WAIT = 100;
+
+    static {
+        byte value = 127;
+        for (int index = 0; index < NULL_PLANE.length; index++) {
+            value ^= -1;
+            NULL_PLANE[index] = value;
+        }
+    }
 
 	/** Resolver of archived original file paths for pixels sets. */
 	protected FilePathResolver resolver;
@@ -106,7 +117,11 @@ public class PixelsService extends AbstractFileSystemService
 	
 	private IQuery iQuery;
 
-	/** Null plane byte array. */
+	/**
+	 * Null plane byte array.
+	 * @deprecated in favor of {@link #NULL_PLANE}
+	 */
+	@Deprecated
 	public static final byte[] nullPlane = new byte[] { -128, 127, -128, 127,
 			-128, 127, -128, 127, -128, 127, // 10
 			-128, 127, -128, 127, -128, 127, -128, 127, -128, 127, // 20
