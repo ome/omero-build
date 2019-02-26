@@ -57,24 +57,24 @@ import org.springframework.context.ApplicationEventPublisherAware;
 public class PixelsService extends AbstractFileSystemService
     implements ApplicationEventPublisherAware {
 
-	/** The logger for this class. */
-	private transient static Logger log = LoggerFactory.getLogger(PixelsService.class);
+    /** The logger for this class. */
+    private transient static Logger log = LoggerFactory.getLogger(PixelsService.class);
 
-	/** Publisher interface used to publish messages concerning missing
-	 * data and similar. */
-	private transient ApplicationEventPublisher pub;
+    /** Publisher interface used to publish messages concerning missing
+     * data and similar. */
+    private transient ApplicationEventPublisher pub;
 
-	/** Suffix for an the image pyramid of a given pixels set. */
-	public static final String PYRAMID_SUFFIX = "_pyramid";
+    /** Suffix for an the image pyramid of a given pixels set. */
+    public static final String PYRAMID_SUFFIX = "_pyramid";
 
-	/** Null plane size constant. */
-	public static final int NULL_PLANE_SIZE = 64;
+    /** Null plane size constant. */
+    public static final int NULL_PLANE_SIZE = 64;
 
     /** Null plane byte array. */
     public static final byte[] NULL_PLANE = new byte[NULL_PLANE_SIZE];
 
-	/** Default of 100 ms for {@link #memoizerWait} */
-	public static final long MEMOIZER_WAIT = 100;
+    /** Default of 100 ms for {@link #memoizerWait} */
+    public static final long MEMOIZER_WAIT = 100;
 
     static {
         byte value = 127;
@@ -84,38 +84,38 @@ public class PixelsService extends AbstractFileSystemService
         }
     }
 
-	/** Resolver of archived original file paths for pixels sets. */
-	protected FilePathResolver resolver;
+    /** Resolver of archived original file paths for pixels sets. */
+    protected FilePathResolver resolver;
 
-	/** BackOff implementation for calculating MissingPyramidExceptions */
-	protected final BackOff backOff;
+    /** BackOff implementation for calculating MissingPyramidExceptions */
+    protected final BackOff backOff;
 
-	/** TileSizes implementation for default values */
-	protected final TileSizes sizes;
+    /** TileSizes implementation for default values */
+    protected final TileSizes sizes;
 
     /* if the repository is read-only */
     private final boolean isReadOnlyRepo;
 
-	/**
-	 * Location where cached data from the {@link Memoizer} should be stored.
-	 */
-	protected final File memoizerDirectory;
+    /**
+     * Location where cached data from the {@link Memoizer} should be stored.
+     */
+    protected final File memoizerDirectory;
 
     /**
      * For read-only servers, this directory is a local read-write directory for storing memo files. May be {@code null}.
      */
     protected File memoizerDirectoryLocalRW;
 
-	/**
-	 * Time in ms. which setId must take before a file is memoized
-	 */
-	protected final long memoizerWait;
+    /**
+     * Time in ms. which setId must take before a file is memoized
+     */
+    protected final long memoizerWait;
 
-	private Timer tileTimes;
+    private Timer tileTimes;
 
-	private Timer minmaxTimes;
-	
-	private IQuery iQuery;
+    private Timer minmaxTimes;
+
+    private IQuery iQuery;
 
 	/**
 	 * Null plane byte array.
