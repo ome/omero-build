@@ -1,5 +1,5 @@
 /*
- *   Copyright 2006-2018 University of Dundee. All rights reserved.
+ *   Copyright 2006-2019 University of Dundee. All rights reserved.
  *   Use is subject to license terms supplied in LICENSE.txt
  */
 
@@ -57,64 +57,72 @@ import org.springframework.context.ApplicationEventPublisherAware;
 public class PixelsService extends AbstractFileSystemService
     implements ApplicationEventPublisherAware {
 
-	/** The logger for this class. */
-	private transient static Logger log = LoggerFactory.getLogger(PixelsService.class);
+    /** The logger for this class. */
+    private transient static Logger log = LoggerFactory.getLogger(PixelsService.class);
 
-	/** Publisher interface used to publish messages concerning missing
-	 * data and similar. */
-	private transient ApplicationEventPublisher pub;
+    /** Publisher interface used to publish messages concerning missing
+     * data and similar. */
+    private transient ApplicationEventPublisher pub;
 
-	/** Suffix for an the image pyramid of a given pixels set. */
-	public static final String PYRAMID_SUFFIX = "_pyramid";
+    /** Suffix for an the image pyramid of a given pixels set. */
+    public static final String PYRAMID_SUFFIX = "_pyramid";
 
-	/** Null plane size constant. */
-	public static final int NULL_PLANE_SIZE = 64;
+    /** Null plane size constant. */
+    public static final int NULL_PLANE_SIZE = 64;
 
-	/** Default of 100 ms for {@link #memoizerWait} */
-	public static final long MEMOIZER_WAIT = 100;
+    /** Null plane byte array. */
+    public static final byte[] NULL_PLANE = new byte[NULL_PLANE_SIZE];
 
-	/** Resolver of archived original file paths for pixels sets. */
-	protected FilePathResolver resolver;
+    /** Default of 100 ms for {@link #memoizerWait} */
+    public static final long MEMOIZER_WAIT = 100;
 
-	/** BackOff implementation for calculating MissingPyramidExceptions */
-	protected final BackOff backOff;
+    static {
+        byte value = 127;
+        for (int index = 0; index < NULL_PLANE.length; index++) {
+            value ^= -1;
+            NULL_PLANE[index] = value;
+        }
+    }
 
-	/** TileSizes implementation for default values */
-	protected final TileSizes sizes;
+    /** Resolver of archived original file paths for pixels sets. */
+    protected FilePathResolver resolver;
+
+    /** BackOff implementation for calculating MissingPyramidExceptions */
+    protected final BackOff backOff;
+
+    /** TileSizes implementation for default values */
+    protected final TileSizes sizes;
 
     /* if the repository is read-only */
     private final boolean isReadOnlyRepo;
 
-	/**
-	 * Location where cached data from the {@link Memoizer} should be stored.
-	 */
-	protected final File memoizerDirectory;
+    /**
+     * Location where cached data from the {@link Memoizer} should be stored.
+     */
+    protected final File memoizerDirectory;
 
     /**
      * For read-only servers, this directory is a local read-write directory for storing memo files. May be {@code null}.
      */
     protected File memoizerDirectoryLocalRW;
 
+    /**
+     * Time in ms. which setId must take before a file is memoized
+     */
+    protected final long memoizerWait;
+
+    private Timer tileTimes;
+
+    private Timer minmaxTimes;
+
+    private IQuery iQuery;
+
 	/**
-	 * Time in ms. which setId must take before a file is memoized
+	 * Null plane byte array.
+	 * @deprecated in favor of {@link #NULL_PLANE}
 	 */
-	protected final long memoizerWait;
-
-	private Timer tileTimes;
-
-	private Timer minmaxTimes;
-	
-	private IQuery iQuery;
-
-	/** Null plane byte array. */
-	public static final byte[] nullPlane = new byte[] { -128, 127, -128, 127,
-			-128, 127, -128, 127, -128, 127, // 10
-			-128, 127, -128, 127, -128, 127, -128, 127, -128, 127, // 20
-			-128, 127, -128, 127, -128, 127, -128, 127, -128, 127, // 30
-			-128, 127, -128, 127, -128, 127, -128, 127, -128, 127, // 40
-			-128, 127, -128, 127, -128, 127, -128, 127, -128, 127, // 50
-			-128, 127, -128, 127, -128, 127, -128, 127, -128, 127, // 60
-			-128, 127, -128, 127 }; // 64
+	@Deprecated
+	public static final byte[] nullPlane = NULL_PLANE;
 
     /**
      * Constructor.
@@ -706,7 +714,7 @@ public class PixelsService extends AbstractFileSystemService
 			for (int z = 0; z < pixbuf.getSizeZ(); z++) {
 				for (int c = 0; c < pixbuf.getSizeC(); c++) {
 					for (int t = 0; t < pixbuf.getSizeT(); t++) {
-						stream.write(nullPlane);
+						stream.write(NULL_PLANE);
 						stream.write(padding);
 					}
 				}
