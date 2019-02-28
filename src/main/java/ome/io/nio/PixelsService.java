@@ -122,14 +122,7 @@ public class PixelsService extends AbstractFileSystemService
 	 * @deprecated in favor of {@link #NULL_PLANE}
 	 */
 	@Deprecated
-	public static final byte[] nullPlane = new byte[] { -128, 127, -128, 127,
-			-128, 127, -128, 127, -128, 127, // 10
-			-128, 127, -128, 127, -128, 127, -128, 127, -128, 127, // 20
-			-128, 127, -128, 127, -128, 127, -128, 127, -128, 127, // 30
-			-128, 127, -128, 127, -128, 127, -128, 127, -128, 127, // 40
-			-128, 127, -128, 127, -128, 127, -128, 127, -128, 127, // 50
-			-128, 127, -128, 127, -128, 127, -128, 127, -128, 127, // 60
-			-128, 127, -128, 127 }; // 64
+	public static final byte[] nullPlane = NULL_PLANE;
 
     /**
      * Constructor.
