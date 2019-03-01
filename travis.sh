@@ -18,10 +18,12 @@ echo versions.omero-common-test=5.5.0-SNAPSHOT >> openmicroscopy/etc/omero.prope
 printf "travis_fold:end:bump-versions\n"
 
 printf "travis_fold:start:build-image\n"
-export BUILD_IMAGE=$(docker build -q -t omero-build . | awk '/Successfully built/{print $NF}')
+docker build -q -t omero-build .
+export BUILD_IMAGE=$(docker inspect --format='{{ .Id }}' omero-build)
+echo Build image: $BUILD_IMAGE
 printf "travis_fold:end:build-image\n"
 
 printf "travis_fold:start:test-infra\n"
 cd openmicroscopy
-.omero/docker srv --all
+.omero/docker srv
 printf "travis_fold:end:test-infra\n"
