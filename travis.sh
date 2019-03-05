@@ -25,5 +25,5 @@ printf "travis_fold:end:build-image\n"
 
 printf "travis_fold:start:test-infra\n"
 cd openmicroscopy
-.omero/docker srv
+COMPOSE_FILE=srv-compose.yml .omero/compose build
 printf "travis_fold:end:test-infra\n"
