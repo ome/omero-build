@@ -6,3 +6,4 @@ services:
 
 script:
 - docker build -t omero-build .
+
