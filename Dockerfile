@@ -22,6 +22,7 @@ USER root
 RUN apt-get update -qq && apt-get install -y -qq zeroc-ice-all-dev
 RUN mkdir /src && chown 1000:1000 /src
 
+# Build all
 USER 1000
 
 # Temporarily build gradle-plugins locally
@@ -30,15 +31,6 @@ WORKDIR /tmp/omero-gradle-plugins
 RUN git submodule update --init
 RUN gradle publishToMavenLocal
 
-# Initialize submodules
+COPY --chown=1000:1000 . /src
 WORKDIR /src
-COPY --chown=1000:1000 .git /src/.git
-COPY --chown=1000:1000 .gitmodules /src/.gitmodules
-RUN git submodule update --init
-
-# Build all
-COPY --chown=1000:1000 *.gradle /src/
-COPY --chown=1000:1000 gradle.properties /src/
-
-#RUN gradle build -x test
 RUN gradle publishToMavenLocal -x javadoc
