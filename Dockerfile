@@ -26,17 +26,8 @@ USER root
 RUN apt-get update && apt-get install -y zeroc-ice-all-dev
 RUN mkdir /src && chown 1000:1000 /src
 
-USER 1000
-
-# Initialize submodules
-WORKDIR /src
-COPY --chown=1000:1000 .git /src/.git
-COPY --chown=1000:1000 .gitmodules /src/.gitmodules
-COPY --chown=1000:1000 build.sh /src/build.sh
-RUN git submodule update --init
-
 # Build all
-COPY --chown=1000:1000 *.gradle /src/
-COPY --chown=1000:1000 gradle.properties /src/
-#RUN gradle build -x test
+USER 1000
+COPY --chown=1000:1000 . /src
+WORKDIR /src
 RUN ./build.sh

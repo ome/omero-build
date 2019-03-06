@@ -5,4 +5,4 @@ services:
 - docker
 
 script:
-- docker build -t omero-build .
+- bash travis.sh
