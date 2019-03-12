@@ -25,13 +25,6 @@ RUN mkdir /src && chown 1000:1000 /src
 # Build all
 USER 1000
 
-# Temporarily build gradle-plugins locally
-RUN echo 2
-RUN git clone -b m4-squashed git://github.com/joshmoore/omero-gradle-plugins /tmp/omero-gradle-plugins
-WORKDIR /tmp/omero-gradle-plugins
-RUN git submodule update --init
-RUN gradle publishToMavenLocal
-
 COPY --chown=1000:1000 . /src
 WORKDIR /src
 RUN gradle publishToMavenLocal -x javadoc
