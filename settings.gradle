@@ -1,2 +1,10 @@
+pluginManagement {
+    repositories {
+        mavenLocal()
+        gradlePluginPortal()
+        maven { url 'https://artifacts.openmicroscopy.org/artifactory/maven/' }
+    }
+}
+
 rootProject.name = 'omero-romio'
 

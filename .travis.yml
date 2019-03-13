@@ -7,12 +7,8 @@ cache:
     - $HOME/.gradle/caches/
     - $HOME/.gradle/wrapper/
 
+install:
+  - DIR=$PWD; (cd /tmp; gradle wrapper --gradle-version=5.2.1; mv .gradle gradle gradlew $DIR)
+
 script:
   - ./gradlew publishToMavenLocal
-
-deploy:
-  provider: script
-  script: ./gradlew publish
-  skip_cleanup: true
-  on:
-    tags: true
