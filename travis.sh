@@ -7,7 +7,7 @@ test -e .build || git clone git://github.com/ome/build-infra.git .build
 export PATH=$PATH:$PWD/.build
 
 build-phase checkout
-test -e openmicroscopy || git clone --depth=1 git://github.com/openmicroscopy/openmicroscopy.git
+test -e openmicroscopy || git clone --depth=1 -b m4 git://github.com/joshmoore/openmicroscopy.git
 test -e openmicroscopy/.build || ln -s $PWD/.build openmicroscopy/.build
 test -e openmicroscopy/.omero || git clone git://github.com/openmicroscopy/omero-test-infra.git openmicroscopy/.omero
 
