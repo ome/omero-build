@@ -19,4 +19,5 @@ settingsEvaluated {
 }
 
 // Use a local m2 repo to ensure a clean build
-System.setProperty("maven.repo.local", System.getProperty("user.dir") + "/m2/repository")
+// Disabled due to broken SNAPSHOT handling.
+// System.setProperty("maven.repo.local", System.getProperty("user.dir") + "/m2/repository")
