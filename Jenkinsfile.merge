@@ -12,6 +12,11 @@ pipeline {
             choices: ['success-only', 'no-error', 'none'],
             description: 'PR check status'
         )
+        string(
+            name: 'MERGE_OPTIONS',
+            defaultValue: '-vvv --no-ask --reset --comment',
+            description: 'scc merge options'
+        )
     }
 
     environment {
@@ -33,8 +38,8 @@ pipeline {
                 sh 'virtualenv build/venv --system-site-packages && build/venv/bin/pip install scc'
                 sh """
                     . build/venv/bin/activate
-                    export PUSH_BRANCH=$MERGE_PUSH_BRANCH GIT_USER=$MERGE_GIT_USER STATUS=${params.STATUS}
-                    bash -x build/build-infra-omero-build/recursive-merge
+                    export PUSH_BRANCH=$MERGE_PUSH_BRANCH GIT_USER=$MERGE_GIT_USER STATUS=${params.STATUS} MERGE_OPTIONS="${params.MERGE_OPTIONS}"
+                    bash build/build-infra-omero-build/recursive-merge
                 """
             }
         }
