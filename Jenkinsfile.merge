@@ -1,0 +1,40 @@
+pipeline {
+    agent {
+        label 'testintegration'
+//        docker {
+//            image 'docker.io/manics/omero-build-gradle:latest'
+//        }
+    }
+
+    parameters {
+        choice(
+            name: 'STATUS',
+            choices: ['success-only', 'no-error', 'none'],
+            description: 'PR check status'
+        )
+    }
+
+    // environment {
+        // These environment variables can be overridden in
+        // Manage Jenkins → Configure System → Global properties → Environment variables
+
+        // MERGE_PUSH_BRANCH
+        // MERGE_GIT_USER
+    // }
+
+    stages {
+        stage('Merge') {
+            steps {
+                // build is in .gitignore so we can use it as a temp dir
+                sh 'mkdir build'
+                sh 'cd build && curl -sfL https://github.com/manics/build-infra/archive/omero-build.tar.gz | tar -zxvf -'
+                sh 'virtualenv build/venv --system-site-packages && build/venv/bin/pip install scc'
+                sh """
+                    . build/venv/bin/activate
+                    export PUSH_BRANCH=$MERGE_PUSH_BRANCH GIT_USER=$MERGE_GIT_USER STATUS=${params.STATUS}
+                    bash -x build/build-infra-omero-build/recursive-merge
+                """
+            }
+        }
+    }
+}
