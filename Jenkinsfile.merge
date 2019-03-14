@@ -14,13 +14,15 @@ pipeline {
         )
     }
 
-    // environment {
+    environment {
         // These environment variables can be overridden in
         // Manage Jenkins → Configure System → Global properties → Environment variables
 
         // MERGE_PUSH_BRANCH
         // MERGE_GIT_USER
-    // }
+
+        BASE_REPO = 'omero-build.git'
+    }
 
     stages {
         stage('Merge') {
