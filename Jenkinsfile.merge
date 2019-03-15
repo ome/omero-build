@@ -1,9 +1,6 @@
 pipeline {
     agent {
         label 'testintegration'
-//        docker {
-//            image 'docker.io/manics/omero-build-gradle:latest'
-//        }
     }
 
     parameters {
@@ -20,11 +17,12 @@ pipeline {
     }
 
     environment {
-        // These environment variables can be overridden in
+        // These optional environment variables can be set in
         // Manage Jenkins → Configure System → Global properties → Environment variables
 
-        // MERGE_PUSH_BRANCH
-        // MERGE_GIT_USER
+        // MERGE_PUSH_BRANCH the branch that merges should be pushed to, default "merge"
+        // MERGE_GIT_USER the GitHub user that the repo branches should be pushed to
+        //   default is the owner of the CI node's GitHub token
 
         BASE_REPO = 'omero-build.git'
     }
@@ -34,12 +32,18 @@ pipeline {
             steps {
                 // build is in .gitignore so we can use it as a temp dir
                 sh 'mkdir build'
-                sh 'cd build && curl -sfL https://github.com/manics/build-infra/archive/omero-build.tar.gz | tar -zxvf -'
+                sh 'cd build && curl -sfL https://github.com/ome/build-infra/archive/master.tar.gz | tar -zxf -'
                 sh 'virtualenv build/venv --system-site-packages && build/venv/bin/pip install scc'
                 sh """
                     . build/venv/bin/activate
-                    export PUSH_BRANCH=$MERGE_PUSH_BRANCH GIT_USER=$MERGE_GIT_USER STATUS=${params.STATUS} MERGE_OPTIONS="${params.MERGE_OPTIONS}"
-                    bash build/build-infra-omero-build/recursive-merge
+                    if [ "${env.MERGE_PUSH_BRANCH}" != "null" ]; then
+                        export PUSH_BRANCH=${env.MERGE_PUSH_BRANCH}
+                    fi
+                    if [ "${env.MERGE_GIT_USER}" != "null" ]; then
+                        export GIT_USER=${env.MERGE_GIT_USER}
+                    fi
+                    export STATUS=${params.STATUS} MERGE_OPTIONS="${params.MERGE_OPTIONS}"
+                    bash build/build-infra-master/recursive-merge
                 """
             }
         }
