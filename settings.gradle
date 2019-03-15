@@ -1,8 +1,8 @@
-rootProject.name = 'omero-build'
+rootProject.name = "omero-build"
 
-include 'omero-model'
-include 'omero-common'
-include 'omero-romio'
-include 'omero-renderer'
-include 'omero-server'
-include 'omero-blitz'
+includeBuild "omero-model"
+includeBuild "omero-common"
+includeBuild "omero-romio"
+includeBuild "omero-renderer"
+includeBuild "omero-server"
+includeBuild "omero-blitz"

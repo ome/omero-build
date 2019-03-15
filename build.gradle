@@ -4,6 +4,12 @@ task publishToMavenLocal {
     dependsOn gradle.includedBuilds*.task(':publishToMavenLocal')
 }
 
+task publish {
+    group "omero"
+    description "Calls publish on all subprojects"
+    dependsOn gradle.includedBuilds*.task(':publish')
+}
+
 task clean {
     group "omero"
     description "Calls clean on all subprojects"
