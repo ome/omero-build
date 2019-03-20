@@ -33,7 +33,7 @@ pipeline {
                 // build is in .gitignore so we can use it as a temp dir
                 sh 'mkdir build'
                 sh 'cd build && curl -sfL https://github.com/ome/build-infra/archive/master.tar.gz | tar -zxf -'
-                sh 'virtualenv build/venv --system-site-packages && build/venv/bin/pip install scc'
+                sh 'virtualenv build/venv && build/venv/bin/pip install scc'
                 sh """
                     . build/venv/bin/activate
                     if [ "${env.MERGE_PUSH_BRANCH}" != "null" ]; then
