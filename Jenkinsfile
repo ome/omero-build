@@ -14,6 +14,17 @@ pipeline {
     }
 
     stages {
+        stage('Versions') {
+            steps {
+                // build is in .gitignore so we can use it as a temp dir
+                sh 'mkdir build'
+                sh 'cd build && curl -sfL https://github.com/ome/build-infra/archive/master.tar.gz | tar -zxf -'
+                sh """
+                    foreach-get-version-as-property >> version.properties
+                """
+                archiveArtifacts artifacts: 'version.properties'
+            }
+        }
         stage('Build') {
             steps {
                 // Currently running on a build node with multiple jobs so incorrect jar may be cached
@@ -24,9 +35,6 @@ pipeline {
         stage('Deploy') {
             steps {
                 sh 'gradle --init-script init-ci.gradle publish'
-                sh 'git clone git://github.com/ome/build-infra .build'
-                sh 'env PATH=$PATH:.build foreach-get-version-as-property >> versions'
-                archiveArtifacts artifacts: 'versions'
             }
         }
     }
