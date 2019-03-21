@@ -27,6 +27,8 @@ pipeline {
         stage('Deploy') {
             steps {
                 sh 'gradle --init-script init-ci.gradle publish'
+                sh 'git clone git://github.com/ome/build-infra .build'
+                sh 'env PATH=$PATH:.build foreach-get-version-as-property >> versions'
             }
         }
     }
