@@ -1,9 +1,6 @@
 pipeline {
     agent {
         label 'testintegration'
-//        docker {
-//            image 'docker.io/manics/omero-build-gradle:latest'
-//        }
     }
 
     environment {
@@ -17,6 +14,19 @@ pipeline {
     }
 
     stages {
+        stage('Versions') {
+            steps {
+                // build is in .gitignore so we can use it as a temp dir
+                sh """
+                    mkdir ${env.WORKSPACE}/build
+                    cd ${env.WORKSPACE}/build && curl -sfL https://github.com/ome/build-infra/archive/master.tar.gz | tar -zxf -
+                    export PATH=$PATH:${env.WORKSPACE}/build/build-infra-master/
+                    cd ..
+                    foreach-get-version-as-property >> version.properties
+                """
+                archiveArtifacts artifacts: 'version.properties'
+            }
+        }
         stage('Build') {
             steps {
                 // Currently running on a build node with multiple jobs so incorrect jar may be cached
