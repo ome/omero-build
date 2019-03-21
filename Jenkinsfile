@@ -1,9 +1,6 @@
 pipeline {
     agent {
         label 'testintegration'
-//        docker {
-//            image 'docker.io/manics/omero-build-gradle:latest'
-//        }
     }
 
     environment {
