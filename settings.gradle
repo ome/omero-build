@@ -6,3 +6,5 @@ includeBuild "omero-romio"
 includeBuild "omero-renderer"
 includeBuild "omero-server"
 includeBuild "omero-blitz"
+includeBuild "omero-java-gateway"
+
