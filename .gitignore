@@ -36,3 +36,7 @@ gradle-local.properties
 
 # Gradle cache
 .gradle
+
+# git://github.com/ome/build-infra (cloned into omero-build/.build)
+.build
+
