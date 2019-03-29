@@ -569,7 +569,7 @@ public interface PixelBuffer extends Closeable
      * @throws DimensionsOutOfBoundsException if offsets are out of bounds
      * after checking with {@link #checkBounds(Integer, Integer, Integer, Integer, Integer)}.
      * @throws BufferOverflowException if
-     * {@code buffer.length > {@link #getStackSize()()}}.
+     * {@code buffer.length > {@link #getStackSize()}}.
      */
     public void setStack(byte[] buffer, Integer z, Integer c, Integer t)
             throws IOException, DimensionsOutOfBoundsException,
