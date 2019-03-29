@@ -1,6 +1,4 @@
 /*
- * ome.io.nio.PixelBuffer
- *
  *   Copyright 2006 University of Dundee. All rights reserved.
  *   Use is subject to license terms supplied in LICENSE.txt
  */
@@ -479,7 +477,7 @@ public interface PixelBuffer extends Closeable
      * @param offset offset within the pixel buffer.
      * @param buffer a byte array of the data.
      * @throws IOException if there is a problem writing to the pixel buffer.
-     * @throws BufferOverflowException if <code>buffer.length > size</code>.
+     * @throws BufferOverflowException if {@code buffer.length > size}.
      */
     public void setRegion(Integer size, Long offset, byte[] buffer)
             throws IOException, BufferOverflowException;
@@ -490,7 +488,7 @@ public interface PixelBuffer extends Closeable
      * @param offset offset within the pixel buffer.
      * @param buffer a byte buffer of the data.
      * @throws IOException if there is a problem writing to the pixel buffer.
-     * @throws BufferOverflowException if <code>buffer.length > size</code>.
+     * @throws BufferOverflowException if {@code buffer.length > size}.
      */
     public void setRegion(Integer size, Long offset, ByteBuffer buffer)
             throws IOException, BufferOverflowException;
@@ -506,7 +504,7 @@ public interface PixelBuffer extends Closeable
      * @throws DimensionsOutOfBoundsException if offsets are out of bounds
      * after checking with {@link #checkBounds(Integer, Integer, Integer, Integer, Integer)}.
      * @throws BufferOverflowException if
-     * <code>buffer.length > {@link #getRowSize()}</code>.
+     * {@code buffer.length > {@link #getRowSize()}}.
      */
     public void setRow(ByteBuffer buffer, Integer y, Integer z, Integer c,
             Integer t) throws IOException, DimensionsOutOfBoundsException,
@@ -522,7 +520,7 @@ public interface PixelBuffer extends Closeable
      * @throws DimensionsOutOfBoundsException if offsets are out of bounds
      * after checking with {@link #checkBounds(Integer, Integer, Integer, Integer, Integer)}.
      * @throws BufferOverflowException if
-     * <code>buffer.length > {@link #getPlaneSize()}</code>.
+     * {@code buffer.length > {@link #getPlaneSize()}}.
      */
     public void setPlane(ByteBuffer buffer, Integer z, Integer c, Integer t)
             throws IOException, DimensionsOutOfBoundsException,
@@ -538,7 +536,7 @@ public interface PixelBuffer extends Closeable
      * @throws DimensionsOutOfBoundsException if offsets are out of bounds
      * after checking with {@link #checkBounds(Integer, Integer, Integer, Integer, Integer)}.
      * @throws BufferOverflowException if
-     * <code>buffer.length > {@link #getPlaneSize()}</code>.
+     * {@code buffer.length > {@link #getPlaneSize()}}.
      */
     public void setPlane(byte[] buffer, Integer z, Integer c, Integer t)
             throws IOException, DimensionsOutOfBoundsException,
@@ -554,7 +552,7 @@ public interface PixelBuffer extends Closeable
      * @throws DimensionsOutOfBoundsException if offsets are out of bounds
      * after checking with {@link #checkBounds(Integer, Integer, Integer, Integer, Integer)}.
      * @throws BufferOverflowException if
-     * <code>buffer.length > {@link #getStackSize()}</code>.
+     * {@code buffer.length > {@link #getStackSize()}}.
      */
     public void setStack(ByteBuffer buffer, Integer z, Integer c, Integer t)
             throws IOException, DimensionsOutOfBoundsException,
@@ -571,7 +569,7 @@ public interface PixelBuffer extends Closeable
      * @throws DimensionsOutOfBoundsException if offsets are out of bounds
      * after checking with {@link #checkBounds(Integer, Integer, Integer, Integer, Integer)}.
      * @throws BufferOverflowException if
-     * <code>buffer.length > {@link #getStackSize()()}</code>.
+     * {@code buffer.length > {@link #getStackSize()()}}.
      */
     public void setStack(byte[] buffer, Integer z, Integer c, Integer t)
             throws IOException, DimensionsOutOfBoundsException,
@@ -586,7 +584,7 @@ public interface PixelBuffer extends Closeable
      * @throws DimensionsOutOfBoundsException if offsets are out of bounds
      * after checking with {@link #checkBounds(Integer, Integer, Integer, Integer, Integer)}.
      * @throws BufferOverflowException if
-     * <code>buffer.length > {@link #getTimepointSize()}</code>.
+     * {@code buffer.length > {@link #getTimepointSize()}}.
      */
     public void setTimepoint(ByteBuffer buffer, Integer t) throws IOException,
             DimensionsOutOfBoundsException, BufferOverflowException;
@@ -600,7 +598,7 @@ public interface PixelBuffer extends Closeable
      * @throws DimensionsOutOfBoundsException if offsets are out of bounds
      * after checking with {@link #checkBounds(Integer, Integer, Integer, Integer, Integer)}.
      * @throws BufferOverflowException if
-     * <code>buffer.length > {@link #getTimepointSize()}</code>.
+     * {@code buffer.length > {@link #getTimepointSize()}}.
      */
     public void setTimepoint(byte[] buffer, Integer t) throws IOException,
             DimensionsOutOfBoundsException, BufferOverflowException;

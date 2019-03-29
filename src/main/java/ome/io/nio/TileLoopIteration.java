@@ -1,6 +1,4 @@
 /*
- * ome.io.nio.TileLoopIteration
- *
  *   Copyright 2011-2017 University of Dundee. All rights reserved.
  *   Use is subject to license terms supplied in LICENSE.txt
  */
@@ -11,7 +9,7 @@ import ome.io.nio.Utils.FailedTileLoopException;
 
 /**
  * A single iteration of a tile for each loop.
- * @author Chris Allan <callan at blackcat dot ca>
+ * @author Chris Allan callan at blackcat dot ca
  * @since OMERO Beta-4.3.0
  */
 public interface TileLoopIteration
@@ -27,9 +25,9 @@ public interface TileLoopIteration
      * timepoint counters.
      * @param tileWidth Width of the tile requested. The tile request
      * itself may be smaller than the original tile width requested if
-     * <code>x + tileWidth > sizeX</code>.
+     * {@code x + tileWidth > sizeX}.
      * @param tileHeight Height of the tile requested. The tile request
-     * itself may be smaller if <code>y + tileHeight > sizeY</code>.
+     * itself may be smaller if {@code y + tileHeight > sizeY}.
      * @param tileCount Counter of the tile since the beginning of the loop.
      * @throws FailedTileLoopException if the loop should be aborted with no more tiles processed
      */
