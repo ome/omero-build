@@ -1,6 +1,4 @@
 /*
- * ome.io.nio.Utils
- *
  *   Copyright 2011-2017 University of Dundee. All rights reserved.
  *   Use is subject to license terms supplied in LICENSE.txt
  */
@@ -9,7 +7,7 @@ package ome.io.nio;
 
 /**
  * General utility methods for working with ROMIO classes.
- * @author Chris Allan <callan at blackcat dot ca>
+ * @author Chris Allan callan at blackcat dot ca
  * @since OMERO Beta-4.3.0
  */
 public class Utils
@@ -21,9 +19,9 @@ public class Utils
      * @param pixelBuffer Pixel buffer which is backing the pixel data.
      * @param tileWidth <b>Maximum</b> width of the tile requested. The tile
      * request itself will be smaller than the original tile width requested if
-     * <code>x + tileWidth > sizeX</code>.
+     * {@code x + tileWidth > sizeX}.
      * @param tileHeight <b>Maximum</b> height of the tile requested. The tile
-     * request itself will be smaller if <code>y + tileHeight > sizeY</code>.
+     * request itself will be smaller if {@code y + tileHeight > sizeY}.
      * @throws FailedTileLoopException if the tile loop was aborted; exception bears completed tile count
      * @return The total number of tiles iterated over.
      */
@@ -47,9 +45,9 @@ public class Utils
      * @param iteration Invoker to call for each tile.
      * @param tileWidth <b>Maximum</b> width of the tile requested. The tile
      * request itself will be smaller than the original tile width requested if
-     * <code>x + tileWidth > sizeX</code>.
+     * {@code x + tileWidth > sizeX}.
      * @param tileHeight <b>Maximum</b> height of the tile requested. The tile
-     * request itself will be smaller if <code>y + tileHeight > sizeY</code>.
+     * request itself will be smaller if {@code y + tileHeight > sizeY}.
      * @return The total number of tiles iterated over.
      * @throws FailedTileLoopException if the tile loop was aborted; exception bears completed tile count
      */
