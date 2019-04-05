@@ -1,10 +1,10 @@
 plugins {
     id "java-library"
-    id "org.openmicroscopy.project" version "5.5.0-m4"
+    id "org.openmicroscopy.project" version "5.5.0-m5"
 }
 
 group = "org.openmicroscopy"
-version = "5.5.0-SNAPSHOT"
+version = "5.5.0-m5"
 
 repositories {
     mavenLocal()
@@ -20,7 +20,7 @@ dependencies {
     testImplementation("junit:junit:4.12")
     testImplementation("org.testng:testng:6.14.2")
 
-    api("org.openmicroscopy:omero-common:5.5.0-m4")
+    api("org.openmicroscopy:omero-common:5.5.0-m5")
 
     // Keep from being exposed to child projects
     implementation("commons-io:commons-io:2.6")
