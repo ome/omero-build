@@ -1,6 +1,7 @@
 language: python
 cache: pip
 sudo: required
+python: 2.7
 services:
 - docker
 
