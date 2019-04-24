@@ -19,7 +19,7 @@ pipeline {
                 // build is in .gitignore so we can use it as a temp dir
                 sh """
                     mkdir ${env.WORKSPACE}/build
-                    cd ${env.WORKSPACE}/build && curl -sfL https://github.com/ome/build-infra/archive/master.tar.gz | tar -zxf -
+                    cd ${env.WORKSPACE}/build && curl -sfL https://github.com/jburel/build-infra/archive/master.tar.gz | tar -zxf -
                     export PATH=$PATH:${env.WORKSPACE}/build/build-infra-master/
                     cd ..
                     foreach-get-version-as-property >> version.properties
