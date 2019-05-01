@@ -86,6 +86,7 @@ public class OmeroPixelsPyramidReader extends MinimalTiffReader {
     {
         log.debug("setId(" + id + ")");
         super.setId(id);
+        canSeparateSeries = false;
     }
 
     /* (non-Javadoc)
