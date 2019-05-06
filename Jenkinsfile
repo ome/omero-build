@@ -16,12 +16,18 @@ pipeline {
     stages {
         stage('Versions') {
             steps {
+
+                copyArtifacts(projectName: 'BIOFORMATS-merge', flatten: true, filter: 'target/version.properties')
+
                 // build is in .gitignore so we can use it as a temp dir
                 sh """
                     mkdir ${env.WORKSPACE}/build
                     cd ${env.WORKSPACE}/build && curl -sfL https://github.com/ome/build-infra/archive/master.tar.gz | tar -zxf -
                     export PATH=$PATH:${env.WORKSPACE}/build/build-infra-master/
                     cd ..
+                    # Workaround for "unflattened" file, possibly due to matrix
+                    find . -name version.properties -exec cp {} . \\;
+                    test -e version.properties
                     foreach-get-version-as-property >> version.properties
                 """
                 archiveArtifacts artifacts: 'version.properties'
@@ -47,4 +53,5 @@ pipeline {
             deleteDir()
         }
     }
+
 }
