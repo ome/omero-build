@@ -30,11 +30,20 @@ pipeline {
     stages {
         stage('Merge') {
             steps {
+
+                copyArtifacts(projectName: 'BIOFORMATS-merge', flatten: true, filter: 'target/version.properties')
+
                 // build is in .gitignore so we can use it as a temp dir
                 sh 'mkdir build'
                 sh 'cd build && curl -sfL https://github.com/ome/build-infra/archive/master.tar.gz | tar -zxf -'
                 sh 'virtualenv build/venv && build/venv/bin/pip install scc'
                 sh """
+
+                    # Workaround for "unflattened" file, possibly due to matrix
+                    find . -name version.properties -exec cp {} . \\;
+                    test -e version.properties
+                    export VERSION_LOG=$PWD/version.properties
+
                     . build/venv/bin/activate
                     if [ "${env.MERGE_PUSH_BRANCH}" != "null" ]; then
                         export PUSH_BRANCH=${env.MERGE_PUSH_BRANCH}
@@ -45,6 +54,8 @@ pipeline {
                     export STATUS=${params.STATUS} MERGE_OPTIONS="${params.MERGE_OPTIONS}"
                     bash build/build-infra-master/recursive-merge
                 """
+
+                archiveArtifacts artifacts: 'version.properties'
             }
         }
     }
