@@ -57,7 +57,7 @@ pipeline {
                     bash build/build-infra-master/recursive-merge
                 """
 
-                archiveArtifacts artifacts: 'version.properties'
+                archiveArtifacts artifacts: 'build/version.properties'
             }
         }
     }
