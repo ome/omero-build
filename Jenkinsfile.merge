@@ -52,6 +52,8 @@ pipeline {
                         export GIT_USER=${env.MERGE_GIT_USER}
                     fi
                     export STATUS=${params.STATUS} MERGE_OPTIONS="${params.MERGE_OPTIONS}"
+                    git add version.properties
+                    rm -rf jdk*testintegration
                     bash build/build-infra-master/recursive-merge
                 """
 
