@@ -37,14 +37,14 @@ pipeline {
                 sh 'virtualenv build/venv && build/venv/bin/pip install scc'
 
                 copyArtifacts(projectName: 'BIOFORMATS-merge', flatten: true,
-                              filter: 'target/version.properties', target: 'build')
+                              filter: 'target/version.tsv', target: 'build')
 
                 sh """
 
                     # Workaround for "unflattened" file, possibly due to matrix
-                    find build/ -name version.properties -exec cp {} build/ \\;
-                    test -e build/version.properties
-                    export VERSION_LOG=$PWD/build/version.properties
+                    find build/ -name version.tsv -exec cp {} build/ \\;
+                    test -e build/version.tsv
+                    export VERSION_LOG=${env.WORKSPACE}/build/version.tsv
 
                     . build/venv/bin/activate
                     if [ "${env.MERGE_PUSH_BRANCH}" != "null" ]; then
@@ -57,7 +57,7 @@ pipeline {
                     bash build/build-infra-master/recursive-merge
                 """
 
-                archiveArtifacts artifacts: 'build/version.properties'
+                archiveArtifacts artifacts: 'build/version.tsv'
             }
         }
     }
