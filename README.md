@@ -8,7 +8,7 @@ This project is a [Gradle composite build](https://docs.gradle.org/current/userg
 
 ## Build from source
 
-The compilation, testing, launch, and delivery of the application are
+The compilation, publishing, and delivery of the applications are
 automated by means of a Gradle (https://gradle.org/) build file.
 In order to perform a publish all sub-projects, all you need is
 a JDK -- version 1.8 or later.
