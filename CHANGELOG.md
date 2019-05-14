@@ -1,5 +1,5 @@
-5.5.0-m8 (April 2019)
----------------------
+5.5.0-m8 (May 2019)
+-------------------
 
 - PixelsPyramidReader: Set canSeperateSeries for BF 6.
 
