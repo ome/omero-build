@@ -3,6 +3,7 @@ set -e
 set -u
 set -x
 
+DIR="${PWD}"; (cd "${TMPDIR}"; gradle wrapper --gradle-version=5.2.1; mv .gradle gradle gradlew "${DIR}")
 test -e .build || git clone git://github.com/ome/build-infra.git .build
 export PATH=$PATH:$PWD/.build
 
