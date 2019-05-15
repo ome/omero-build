@@ -22,7 +22,7 @@
 	path = omero-blitz
 	url = https://github.com/ome/omero-blitz
 	branch = master
-[submodule "omero-java-gateway"]
-	path = omero-java-gateway
-	url = https://github.com/ome/omero-java-gateway
+[submodule "omero-gateway-java"]
+	path = omero-gateway-java
+	url = https://github.com/ome/omero-gateway-java
 	branch = master
