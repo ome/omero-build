@@ -17,7 +17,7 @@ pipeline {
         stage('Versions') {
             steps {
 
-                copyArtifacts(projectName: 'BIOFORMATS-merge', flatten: true, filter: 'target/version.properties')
+                copyArtifacts(projectName: 'OMERO-gradle-plugins-build', flatten: true, filter: 'build/version.properties')
 
                 // build is in .gitignore so we can use it as a temp dir
                 sh """
