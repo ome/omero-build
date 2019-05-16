@@ -17,7 +17,7 @@ pipeline {
         stage('Versions') {
             steps {
 
-                copyArtifacts(projectName: 'OMERO-gradle-plugins-build', flatten: true, filter: 'artifact/version.properties')
+                copyArtifacts(projectName: 'OMERO-gradle-plugins-build', flatten: true, filter: 'version.properties')
 
                 // build is in .gitignore so we can use it as a temp dir
                 sh """
