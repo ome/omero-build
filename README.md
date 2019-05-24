@@ -14,7 +14,7 @@ In order to run tasks for all sub-projects, all you need is
 a JDK -- version 1.8 or later.
 Clone this GitHub repository `git clone https://github.com/ome/omero-build.git`.
 
-To list the available OMERO tasks, run:
+To list all available OMERO tasks, run:
 
   gradle tasks
 
