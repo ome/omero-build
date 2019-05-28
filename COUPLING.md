@@ -43,7 +43,7 @@ groupId of "org.openmicroscopy" are all specified in the build.gradle file. The
 same is true for all dependencies. Where possible, a component should refer to
 exactly **one** dependency in this chain to prevent confusion.
 
-The openmicroscopy build which is not yet written in gradle specifies its
+The openmicroscopy build which is not yet written in Gradle specifies its
 version in **etc/omero.properties**. Also, unlike all the other versions, a
 synthetic version gets generated for the OMERO.server.zip. The top level
 `openmicroscopy` build generates a version from `git describe` so that you can
@@ -68,12 +68,12 @@ single project or to check out the supermodule with the other projects. If you
 are working on more than a single repository at a time, the latter is likely
 easier. And in that case, properly testing a set of PRs will also require
 opening a PR against this repository. Travis builds in the individual
-repositories is of minimal value for breaking changes
+repositories are of minimal value for breaking changes.
 
 Version Tooling
 ---------------
 
 In order to coordinate all the versions described above, scripts have been
 collected in the [build-infra](https://github.com/ome/build-infra) repository.
-These scripts make use of the checked out submoduels and `git submodule foreach`
+These scripts make use of the checked out submodules and `git submodule foreach`
 to update version variables to match your local directory.
