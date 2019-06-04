@@ -21,3 +21,7 @@ To list all available OMERO tasks, run:
 To publish locally all sub-projects, run:
 
   gradle publishToMavenLocal
+
+If you want to build from SNAPSHOT versions, you may need to update
+the version for multiple components. See [COUPLING.md](./COUPLING.md)
+for more information.
