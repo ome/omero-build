@@ -27,7 +27,7 @@ pipeline {
                     cd ..
                     # Workaround for "unflattened" file, possibly due to matrix
                     find . -name version.properties -exec cp {} . \\;
-                    test -e version.properties
+                    test -e version.properties || touch version.properties
                     foreach-get-version-as-property >> version.properties
                 """
                 archiveArtifacts artifacts: 'version.properties'
