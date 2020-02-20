@@ -20,7 +20,7 @@ dependencies {
     testImplementation("junit:junit:4.12")
     testImplementation("org.testng:testng:6.14.2")
 
-    api("org.openmicroscopy:omero-common:5.5.3")
+    api("org.openmicroscopy:omero-common:5.5.4")
 
     // Keep from being exposed to child projects
     implementation("commons-io:commons-io:2.6")
