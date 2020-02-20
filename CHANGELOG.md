@@ -1,3 +1,9 @@
+5.5.4 (February 2020)
+---------------------
+
+- Allow for the retrieval of current file mode ([#16](https://github.com/ome/omero-romio/pull/16))
+- Bump omero-common version to 5.5.4.
+
 5.5.3 (December 2019)
 ---------------------
 
