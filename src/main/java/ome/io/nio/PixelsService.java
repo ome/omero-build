@@ -117,6 +117,14 @@ public class PixelsService extends AbstractFileSystemService
 
     private IQuery iQuery;
 
+    /* Called after setId to ensure used files do not include other private data. */
+    private ReaderSecurityCheck readerSecurityCheck = new ReaderSecurityCheck() {
+        @Override
+        public void assertUsedFilesReadable(IFormatReader reader) {
+            // no check yet, see setReaderSecurityCheck
+        }
+    };
+
 	/**
 	 * Null plane byte array.
 	 * @deprecated in favor of {@link #NULL_PLANE}
@@ -228,6 +236,13 @@ public class PixelsService extends AbstractFileSystemService
     public void setMetrics(Metrics metrics) {
         this.tileTimes = metrics.timer(this, "tileTimes");
         this.minmaxTimes = metrics.timer(this, "minmaxTimes");
+    }
+
+    /**
+     * @param check the used files check to apply after subsequent {@link IFormatReader#setId(String)}
+     */
+    public void setReaderSecurityCheck(ReaderSecurityCheck check) {
+        readerSecurityCheck = check;
     }
 
     public long getMemoizerWait() {
@@ -839,7 +854,13 @@ public class PixelsService extends AbstractFileSystemService
      * instances and {@link IFormatReader#setFlattenedResolutions(boolean)} set to false.
      */
     protected IFormatReader createBfReader() {
-        IFormatReader reader = new ImageReader();
+        IFormatReader reader = new ImageReader() {
+            @Override
+            public void setId(String id) throws FormatException, IOException {
+                super.setId(id);
+                readerSecurityCheck.assertUsedFilesReadable(this);
+            }
+        };
         reader = new ChannelFiller(reader);
         reader = new ChannelSeparator(reader);
         if (memoizerDirectoryLocalRW == null) {

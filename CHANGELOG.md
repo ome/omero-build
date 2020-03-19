@@ -3,6 +3,8 @@
 
 - Display unit test output instead of caching it
   ([#17](https://github.com/ome/omero-romio/pull/17))
+- Security vulnerability fix for
+  [2019-SV1](https://www.openmicroscopy.org/security/advisories/2019-SV1-reader-used-files/)
 - Bump omero-common version to 5.5.5.
 
 5.5.4 (February 2020)
