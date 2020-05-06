@@ -125,7 +125,7 @@ public class AbstractFileSystemService {
      * "ROOT/<prefix>/Dir-123/Dir-456/123456".
      *
      * @param prefix id type prefix
-     * @param id     the thumbnail identifier
+     * @param id     the model object identifier
      * @return       the path relative to the root
      */
     protected String getPath(String prefix, Long id) {
