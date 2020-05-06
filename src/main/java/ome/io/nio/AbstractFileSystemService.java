@@ -122,7 +122,7 @@ public class AbstractFileSystemService {
      * Returns a numbered path relative to the root of this service for a
      * given prefix, but is ignorant of FS and similar constructs. For
      * example, given an id of 123456 this will return
-     * "ROOT/<path>/Dir-123/Dir-456/123456".
+     * "ROOT/<prefix>/Dir-123/Dir-456/123456".
      *
      * @param prefix id type prefix
      * @param id     the thumbnail identifier
