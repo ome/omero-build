@@ -118,7 +118,17 @@ public class AbstractFileSystemService {
         return getPath(THUMBNAILS_PATH, id);
     }
 
-    private String getPath(String prefix, Long id) {
+    /**
+     * Returns a numbered path relative to the root of this service for a
+     * given prefix, but is ignorant of FS and similar constructs. For
+     * example, given an id of 123456 this will return
+     * "ROOT/<prefix>/Dir-123/Dir-456/123456".
+     *
+     * @param prefix id type prefix
+     * @param id     the model object identifier
+     * @return       the path relative to the root
+     */
+    protected String getPath(String prefix, Long id) {
         String suffix = "";
         Long remaining = id;
         Long dirno = 0L;
