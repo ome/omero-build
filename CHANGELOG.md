@@ -1,3 +1,9 @@
+5.6.0 (May 2020)
+----------------
+
+- Remove junit dependency ([#19](https://github.com/ome/omero-romio/pull/19))
+- Allow sub-classes, etc. to call getPath()  ([#21](https://github.com/ome/omero-romio/pull/21))
+
 5.5.5 (March 2020)
 ------------------
 
