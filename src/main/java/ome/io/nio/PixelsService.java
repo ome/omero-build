@@ -1,5 +1,5 @@
 /*
- *   Copyright 2006-2019 University of Dundee. All rights reserved.
+ *   Copyright 2006-2020 University of Dundee. All rights reserved.
  *   Use is subject to license terms supplied in LICENSE.txt
  */
 
@@ -229,6 +229,7 @@ public class PixelsService extends AbstractFileSystemService
             log.info("PixelsService(path=" +
                      path + ", resolver=" + resolver + ", backoff=" + backOff +
                      ", sizes=" + sizes + ")");
+            log.info("Bio-Formats version is {}", IFormatReader.class.getPackage().getImplementationVersion());
         }
         this.iQuery = iQuery;
     }
