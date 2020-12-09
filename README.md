@@ -1,5 +1,4 @@
-[![Build Status](https://travis-ci.org/ome/omero-romio.png)](https://travis-ci.org/ome/omero-romio)
-
+[![Actions Status](https://github.com/ome/omero-romio/workflows/Gradle/badge.svg)](https://github.com/ome/omero-romio/actions)
 # omero-romio
 
 A Gradle project
