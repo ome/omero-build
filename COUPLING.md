@@ -67,7 +67,7 @@ When working on a single repository, you can choose whether to check out a
 single project or to check out the supermodule with the other projects. If you
 are working on more than a single repository at a time, the latter is likely
 easier. And in that case, properly testing a set of PRs will also require
-opening a PR against this repository. Travis builds in the individual
+opening a PR against this repository. CI builds in the individual
 repositories are of minimal value for breaking changes.
 
 Version Tooling
