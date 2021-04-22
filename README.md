@@ -1,5 +1,3 @@
-[![Build Status](https://travis-ci.org/ome/omero-build.png)](https://travis-ci.org/ome/omero-build)
-
 # omero-build
 
 A Gradle super project. All sub-projects are added as submodule.
