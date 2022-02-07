@@ -38,8 +38,8 @@ pipeline {
                 // Currently running on a build node with multiple jobs so incorrect jar may be cached
                 // (Moving to Docker should fix this)
                 sh '''
-                    source /opt/omero/server/venv3/bin/activate
-                    gradle --init-script init-ci.gradle publishToMavenLocal --refresh-dependencies
+                    export PATH=$PATH
+                    gradle --init-script init-ci.gradle publishToMavenLocal
                 '''
                 archiveArtifacts artifacts: 'omero-blitz/build/**/*python.zip'
             }
