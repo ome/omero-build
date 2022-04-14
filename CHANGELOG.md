@@ -1,3 +1,12 @@
+5.6.3 (April 2022)
+------------------
+
+- Use maven central ([#30](https://github.com/ome/omero-romio/pull/30))
+- Build with Gradle 6 ([#29](https://github.com/ome/omero-romio/pull/29))
+- Log the version of Bio-Formats ([#28](https://github.com/ome/omero-romio/pull/28))
+- Bump omero-common version to 5.5.8.
+
+
 5.6.2 (September 2020)
 ----------------------
 
