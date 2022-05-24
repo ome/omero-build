@@ -21,5 +21,5 @@ public interface TileSizes {
     int getTileHeight();
     int getMaxPlaneWidth();
     int getMaxPlaneHeight();
-
+    boolean getMaxPlaneFloatOverride();
 }

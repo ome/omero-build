@@ -299,6 +299,12 @@ public class PixelsService extends AbstractFileSystemService
      */
     public StatsInfo[] makePyramid(Pixels pixels)
     {
+        String type = pixels.getPixelsType().getValue();
+        if ("float".equals(type) || "double".equals(type)) {
+            log.debug("Pyramid creation disabled for floating point"
+                    + " pixel data");
+            return null;
+        }
         final String pixelsFilePath = getPixelsPath(pixels.getId());
         final File pixelsFile = new File(pixelsFilePath);
         final String pixelsPyramidFilePath = pixelsFilePath + PYRAMID_SUFFIX;
@@ -670,9 +676,11 @@ public class PixelsService extends AbstractFileSystemService
      *         otherwise
      */
     public boolean requiresPixelsPyramid(Pixels pixels) {
-        String type = pixels.getPixelsType().getValue();
-        if ("float".equals(type) || "double".equals(type))
-            return false;
+        if (sizes.getMaxPlaneFloatOverride()) {
+            String type = pixels.getPixelsType().getValue();
+            if ("float".equals(type) || "double".equals(type))
+                return false;
+        }
         final long sizeX = pixels.getSizeX();
         final long sizeY = pixels.getSizeY();
         final boolean requirePyramid = (sizeX * sizeY) > (sizes.getMaxPlaneWidth()*sizes.getMaxPlaneHeight());
