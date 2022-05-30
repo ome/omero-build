@@ -17,17 +17,26 @@ package ome.io.nio;
 public class ConfiguredTileSizes implements TileSizes {
 
     private final int tileWidth, tileHeight, maxPlaneWidth, maxPlaneHeight;
-
-    public ConfiguredTileSizes() {
-        this(256, 256, 3192, 3192); // Default as in omero.properties
-    }
+    private final boolean maxPlaneFloatOverride;
 
     public ConfiguredTileSizes(int tileWidth, int tileHeight,
-            int maxPlaneWidth, int maxPlaneHeight) {
+            int maxPlaneWidth, int maxPlaneHeight,
+            boolean maxPlaneFloatOverride) {
         this.tileWidth = tileWidth;
         this.tileHeight = tileHeight;
         this.maxPlaneWidth = maxPlaneWidth;
         this.maxPlaneHeight = maxPlaneHeight;
+        this.maxPlaneFloatOverride = maxPlaneFloatOverride;
+    }
+
+    public ConfiguredTileSizes(int tileWidth, int tileHeight,
+            int maxPlaneWidth, int maxPlaneHeight) {
+        this(tileWidth, tileHeight,
+                maxPlaneWidth, maxPlaneHeight, true);
+    }
+
+    public ConfiguredTileSizes() {
+        this(256, 256, 3192, 3192); // Default as in omero.properties
     }
 
     public int getTileWidth() {
@@ -43,6 +52,10 @@ public class ConfiguredTileSizes implements TileSizes {
     }
     public int getMaxPlaneHeight() {
         return maxPlaneHeight;
+    }
+
+    public boolean getMaxPlaneFloatOverride() {
+        return maxPlaneFloatOverride;
     }
 
     @Override
