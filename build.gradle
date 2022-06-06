@@ -1,6 +1,6 @@
 plugins {
     id "java-library"
-    id "org.openmicroscopy.project" version "5.5.1"
+    id "org.openmicroscopy.project" version "5.5.4"
 }
 
 group = "org.openmicroscopy"
@@ -19,7 +19,7 @@ java {
 dependencies {
     testImplementation("org.testng:testng:6.14.2")
 
-    api("org.openmicroscopy:omero-common:5.5.9")
+    api("org.openmicroscopy:omero-common:5.5.10")
 
     // Keep from being exposed to child projects
     implementation("commons-io:commons-io:2.6")
