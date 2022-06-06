@@ -1,3 +1,12 @@
+5.7.0 (June 2022)
+------------------
+
+- Add new ConfigureTileSizes constructor and make the pyramidal requirement for floating-point pixel types configurable ([#37](https://github.com/ome/omero-romio/pull/37))
+- Bump omero-common version to 5.5.10 ([#38](https://github.com/ome/omero-romio/pull/38))
+- Bump org.openmicroscopy.project plugin to 5.5.4 ([#38](https://github.com/ome/omero-romio/pull/38))
+- Add Gradle publication workflow ([#38](https://github.com/ome/omero-romio/pull/38))
+
+
 5.6.4 (April 2022)
 ------------------
 
