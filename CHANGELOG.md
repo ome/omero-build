@@ -1,3 +1,9 @@
+5.7.1 (December 2022)
+---------------------
+
+- Bump to TestNG 7.5 ([#34](https://github.com/ome/omero-romio/pull/33))
+- Bump omero-common version to 5.6.0.
+
 5.7.0 (June 2022)
 ------------------
 
