@@ -1,3 +1,9 @@
+5.7.2 (March 2023)
+------------------
+
+- Push to releases folder on artifactory ([#42](https://github.com/ome/omero-romio/pull/42))
+- Bump omero-common version to 5.6.1.
+
 5.7.1 (December 2022)
 ---------------------
 
