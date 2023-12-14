@@ -1,3 +1,8 @@
+5.7.4 (December 2023)
+---------------------
+
+- Bump omero-common version to 5.6.4.
+
 5.7.4 (September 2023)
 ----------------------
 
