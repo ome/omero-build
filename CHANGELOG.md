@@ -1,3 +1,7 @@
+5.8.1 (March 2025)
+------------------
+- Bump omero-common version to 5.7.1
+
 5.8.0 (November 2024)
 ---------------------
 
