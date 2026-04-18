@@ -26,3 +26,8 @@
 	path = omero-gateway-java
 	url = https://github.com/ome/omero-gateway-java
 	branch = master
+[submodule "omero-zarr-pixel-buffer"]
+       path = omero-zarr-pixel-buffer
+       url = https://github.com/ome/omero-zarr-pixel-buffer.git
+       branch = master
+
