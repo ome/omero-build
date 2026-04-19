@@ -29,3 +29,4 @@
 [submodule "omero-zarr-pixel-buffer"]
 	path = omero-zarr-pixel-buffer
 	url = https://github.com/ome/omero-zarr-pixel-buffer.git
+	branch = master
