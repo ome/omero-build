@@ -7,5 +7,4 @@ includeBuild "omero-renderer"
 includeBuild "omero-server"
 includeBuild "omero-blitz"
 includeBuild "omero-gateway-java"
-includeBuild "omero-zarr-pixel-buffer"
 
